@@ -13,10 +13,12 @@ const getAuthType = () => {
 };
 
 interface SetCredentialsInput {
-    key: string;
+    [key: string]: string;
 }
 
-const setCredentials = ({ key }: SetCredentialsInput) => {
+const TEST_CLIENT_ID = 'ju16a6m81mhid5ue1z3v2g0uh';
+
+const setCredentials = ({ key = TEST_CLIENT_ID }: SetCredentialsInput) => {
     PropertiesService.getUserProperties().setProperty(clientIdProperty, key);
 
     return {

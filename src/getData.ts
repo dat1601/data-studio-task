@@ -61,7 +61,7 @@ const getData = ({
     const clientId = userProperties.getProperty(CLIENT_ID_PROPERTY);
     const sl_token = registerToken(name, email, clientId!);
     const requestedFields = getFieldsFromRequest(fields);
-    const PAGE_AMOUNT = Math.ceil(+postLimit / POSTS_PER_PAGE);
+    const PAGE_AMOUNT = Math.ceil(postLimit / POSTS_PER_PAGE);
     const POST_AMOUNT_ON_LAST_PAGE =
         postLimit > TOTAL_POSTS ? POSTS_PER_PAGE : postLimit % POSTS_PER_PAGE;
 

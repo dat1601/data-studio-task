@@ -12,6 +12,13 @@ const getFields = () => {
             metOrDim: 'dim',
         },
         {
+            id: 'postId',
+            name: 'Post ID',
+            description: 'ID of the post',
+            type: cc.FieldType.TEXT,
+            metOrDim: 'dim',
+        },
+        {
             id: 'postLength',
             name: 'Post length',
             description: 'Number of characters in the post',

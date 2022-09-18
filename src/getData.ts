@@ -8,6 +8,8 @@ const responseToRows = (requestedFields: Fields, response: PostsResponse) => {
             switch (field.getId()) {
                 case 'userName':
                     return row.push(post.from_name);
+                case 'postId':
+                    return row.push(post.id);
                 case 'postLength':
                     return row.push(post.message.length);
                 default:

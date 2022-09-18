@@ -14,7 +14,11 @@ const testGetData = () => {
             data && data.hasOwnProperty('posts') && data.hasOwnProperty('page');
         if (isPostsResponseValid) {
             console.log(data.page);
-            console.log(data.post[10]);
+            data.posts.forEach((post: UserPost) => {
+                if (post.message.length >= 1000) {
+                    console.log(post.id);
+                }
+            });
         } else {
             throw new Error('Posts response is invalid');
         }

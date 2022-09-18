@@ -28,6 +28,9 @@ type MetricOrDimension = {
     description: string;
 };
 
+type ResponseRow = (number | string)[];
+type ResponseRows = { values: ResponseRow }[];
+
 /**
  * GAS-related types.
  */

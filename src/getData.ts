@@ -63,7 +63,7 @@ const getData = ({
     const requestedFields = getFieldsFromRequest(fields);
     const PAGE_AMOUNT = Math.ceil(+postLimit / POSTS_PER_PAGE);
     const POST_AMOUNT_ON_LAST_PAGE =
-        postLimit > TOTAL_POSTS ? 100 : postLimit % POSTS_PER_PAGE;
+        postLimit > TOTAL_POSTS ? POSTS_PER_PAGE : postLimit % POSTS_PER_PAGE;
 
     let rows = [] as ResponseRows;
     for (let page = 1; page <= PAGE_AMOUNT && page <= TOTAL_PAGES; page++) {

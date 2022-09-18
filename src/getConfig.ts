@@ -21,14 +21,16 @@ const getConfig = () => {
 
     // Add an input for specifying a maximum number of posts to retrieve
     config
-        .newSelectMultiple()
+        .newSelectSingle()
         .setId('postLimit')
         .setName('Post limit')
         .setHelpText(
             'Maximum number of posts that will be fetched from the API'
         )
         .addOption(config.newOptionBuilder().setValue('100').setLabel('100'))
+        .addOption(config.newOptionBuilder().setValue('250').setLabel('250'))
         .addOption(config.newOptionBuilder().setValue('1000').setLabel('1000'))
+        .addOption(config.newOptionBuilder().setValue('2500').setLabel('2500'))
         .addOption(
             config.newOptionBuilder().setValue('10000').setLabel('10000')
         )

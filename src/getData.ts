@@ -1,6 +1,3 @@
-import Request = GoogleAppsScript.Data_Studio.Request;
-import Fields = GoogleAppsScript.Data_Studio.Fields;
-
 const responseToRows = (requestedFields: Fields, response: PostsResponse) => {
     return response.posts.map((post) => {
         let row = [] as (number | string)[];
@@ -22,7 +19,7 @@ const responseToRows = (requestedFields: Fields, response: PostsResponse) => {
 
 const getFieldsFromRequest = (fields: { name: string }[]) => {
     const requestedFieldIds = fields.map((field) => field.name);
-    return getFields().forIds(requestedFieldIds);
+    return getFieldsForSchema().forIds(requestedFieldIds);
 };
 
 const getData = ({

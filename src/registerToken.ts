@@ -1,5 +1,3 @@
-import HttpMethod = GoogleAppsScript.URL_Fetch.HttpMethod;
-
 const registerToken = (
     name: string,
     email: string,

@@ -1,42 +1,35 @@
-const getFields = () => {
+const fieldsAddDimension = (
+    dimensions: MetricOrDimension[],
+    fields: Fields
+) => {
+    dimensions.forEach((dimension) => {
+        fields
+            .newDimension()
+            .setId(dimension.id)
+            .setType(dimension.type)
+            .setName(dimension.name)
+            .setDescription(dimension.description);
+    });
+};
+
+const fieldsAddMetrics = (metrics: MetricOrDimension[], fields: Fields) => {
+    metrics.forEach((metric) => {
+        fields
+            .newMetric()
+            .setId(metric.id)
+            .setType(metric.type)
+            .setName(metric.name)
+            .setDescription(metric.description);
+    });
+};
+
+const getFieldsForSchema = () => {
     const cc = DataStudioApp.createCommunityConnector();
 
     const fields = cc.getFields();
 
-    [
-        {
-            id: 'userName',
-            name: 'User name',
-            description: 'Name of user who made the post',
-            type: cc.FieldType.TEXT,
-            metOrDim: 'dim',
-        },
-        {
-            id: 'postId',
-            name: 'Post ID',
-            description: 'ID of the post',
-            type: cc.FieldType.TEXT,
-            metOrDim: 'dim',
-        },
-        {
-            id: 'postLength',
-            name: 'Post length',
-            description: 'Number of characters in the post',
-            type: cc.FieldType.NUMBER,
-            metOrDim: 'met',
-        },
-    ].forEach((field) => {
-        const newField =
-            field.metOrDim === 'dim'
-                ? fields.newDimension()
-                : fields.newMetric();
-
-        newField
-            .setId(field.id)
-            .setName(field.name)
-            .setDescription(field.description)
-            .setType(field.type);
-    });
+    fieldsAddDimension(DIMENSIONS_FOR_SCHEMA, fields);
+    fieldsAddMetrics(METRICS_FOR_SCHEMA, fields);
 
     fields.setDefaultDimension('userName');
     fields.setDefaultMetric('postLength');
@@ -45,7 +38,7 @@ const getFields = () => {
 };
 
 const getSchema = () => {
-    const fields = getFields().build();
+    const fields = getFieldsForSchema().build();
 
     return {
         schema: fields,

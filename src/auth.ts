@@ -1,10 +1,8 @@
-const clientIdProperty = 'clientId';
-
 const resetAuth = () =>
-    PropertiesService.getUserProperties().deleteProperty(clientIdProperty);
+    PropertiesService.getUserProperties().deleteProperty(CLIENT_ID_PROPERTY);
 
 const isAuthValid = () =>
-    !!PropertiesService.getUserProperties().getProperty(clientIdProperty);
+    !!PropertiesService.getUserProperties().getProperty(CLIENT_ID_PROPERTY);
 
 const getAuthType = () => {
     const cc = DataStudioApp.createCommunityConnector();
@@ -16,10 +14,8 @@ interface SetCredentialsInput {
     [key: string]: string;
 }
 
-const TEST_CLIENT_ID = 'ju16a6m81mhid5ue1z3v2g0uh';
-
 const setCredentials = ({ key = TEST_CLIENT_ID }: SetCredentialsInput) => {
-    PropertiesService.getUserProperties().setProperty(clientIdProperty, key);
+    PropertiesService.getUserProperties().setProperty(CLIENT_ID_PROPERTY, key);
 
     return {
         errorCode: !!key ? 'NONE' : 'INVALID_CREDENTIALS',

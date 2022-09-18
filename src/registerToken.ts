@@ -12,8 +12,6 @@ const registerToken = (
         method: 'post' as HttpMethod,
         payload,
     };
-    const REGISTER_TOKEN_URL =
-        'https://api.supermetrics.com/assignment/register';
     try {
         const response = UrlFetchApp.fetch(REGISTER_TOKEN_URL, options);
         const { data } = JSON.parse(response.getContentText());

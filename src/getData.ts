@@ -27,11 +27,10 @@ const getData = ({
     fields,
 }: Request<ConfigParams>) => {
     const userProperties = PropertiesService.getUserProperties();
-    const clientId = userProperties.getProperty(clientIdProperty);
+    const clientId = userProperties.getProperty(CLIENT_ID_PROPERTY);
     const sl_token = registerToken(name, email, clientId!);
     const requestedFields = getFieldsFromRequest(fields);
     const page = 2;
-    const GET_POSTS_BASE_URL = 'https://api.supermetrics.com/assignment/posts';
     const GET_POSTS_URL = `${GET_POSTS_BASE_URL}?sl_token=${sl_token}&page=${page}`;
 
     try {
